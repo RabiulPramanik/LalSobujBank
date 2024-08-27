@@ -1,0 +1,21 @@
+<h1>Hello {{user.first_name}} {{user.last_name}}</h1>
+
+<p>
+    {% if title == 'Deposite' %}
+        {{amount}}$ {{title}} Successfully completed. After Transaction Balanace {{user.account.balance}}$
+    {% elif title == 'Withdraw' %}
+        {{amount}}$ {{title}} Successfully completed. After Transaction Balanace {{user.account.balance}}$
+    {% elif title == 'Loan request' %}
+        {{amount}}$ {{title}} Successfully completed. After Transaction Balanace {{user.account.balance}}$
+    {% elif title == 'Transfer Loan' %}
+        {{amount}}$ {{title}} Successfully completed. After Transaction Balanace {{user.account.balance}}$
+    {% elif title == 'Loan Aprove' %}
+        {{amount}}$ {{title}} Successfully completed. After Transaction Balanace {{user.account.balance}}$
+    {% else %}
+        Empty!
+    {% endif %}
+</p>
+
+
+<h3>Thanks for Banking with us</h3>
+<h1 class="text-red-500 text-sm font-bold">LalSobuj bank</h1>
