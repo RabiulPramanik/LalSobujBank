@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 from pathlib import Path
 import dj_database_url
 import environ
+import sys
+import os
 env = environ.Env()
 environ.Env.read_env()
 
@@ -116,6 +118,16 @@ DATABASES = {
         default='postgresql://lalsobujbank_user:y15LbJeNGAqdheVIPJ1UqkRQpAnMqwdG@dpg-cr70r39u0jms73cfuot0-a.oregon-postgres.render.com/lalsobujbank',
     )
 }
+
+if __name__ == "__main__":
+    from django.core.management import execute_from_command_line
+    execute_from_command_line(sys.argv + ["runserver", "0.0.0.0:8000"])
+
+
+from django.core.management.commands.runserver import Command as runserver
+
+runserver.default_port = os.environ.get("PORT", "8000")
+
 
 
 # Password validation
