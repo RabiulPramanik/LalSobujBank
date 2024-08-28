@@ -16,6 +16,7 @@ from accounts.models import UserBankAccount
 from django.core.mail import EmailMessage, EmailMultiAlternatives
 from django.template.loader import render_to_string
 
+
 def send_email(user, amount, mail_subject, mail_template, title):
     message = render_to_string(mail_template, {
         'user': user,
@@ -242,6 +243,7 @@ def TransferMoneyView(request):
                         transaction_type = RECEIVE,
                     )
                     send_email(request.user, amount, "Transfer Loan", "transactions/email.html", 'Transfer Loan')
+                    send_email(account.user, amount, "Receive Loan", "transactions/email.html", 'Receive Loan')
 
                     return redirect("report")
     else:
