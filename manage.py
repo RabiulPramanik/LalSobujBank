@@ -7,6 +7,12 @@ import sys
 def main():
     """Run administrative tasks."""
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'LalSobujBank.settings')
+
+    # Check if the code is running on Render
+    if "RENDER" in os.environ:
+        # Force the server to bind to 0.0.0.0 on port 8000
+        sys.argv = ["manage.py", "runserver", "0.0.0.0:8000"]
+
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:
